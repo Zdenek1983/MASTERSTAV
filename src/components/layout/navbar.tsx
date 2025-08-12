@@ -16,6 +16,14 @@ export default function Navbar() {
     { name: t('contact'), href: '/kontakt', icon: Phone },
   ]
   
+  const languages = [
+    { code: 'cs', name: 'Čeština', flag: '🇨🇿' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+    { code: 'uk', name: 'Українська', flag: '🇺🇦' },
+    { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' }
+  ]
+  
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,34 +60,25 @@ export default function Navbar() {
             })}
             
             {/* Language switcher with flags */}
-            <div className="flex items-center space-x-2 ml-4">
-              <button
-                onClick={() => setLanguage('cs')}
-                className={cn(
-                  "p-2 rounded-md text-xs font-medium transition-all duration-200 flex items-center space-x-1",
-                  language === 'cs' 
-                    ? "bg-emerald-600 text-white shadow-md" 
-                    : "text-slate-600 hover:bg-slate-100"
-                )}
-                title="Čeština"
-              >
-                <span className="text-lg">🇨🇿</span>
-              </button>
-              <button
-                onClick={() => setLanguage('de')}
-                className={cn(
-                  "p-2 rounded-md text-xs font-medium transition-all duration-200 flex items-center space-x-1",
-                  language === 'de' 
-                    ? "bg-emerald-600 text-white shadow-md" 
-                    : "text-slate-600 hover:bg-slate-100"
-                )}
-                title="Deutsch"
-              >
-                <span className="text-lg">🇩🇪</span>
-              </button>
+            <div className="flex items-center space-x-1 ml-4">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code as any)}
+                  className={cn(
+                    "p-2 rounded-md text-xs font-medium transition-all duration-200 flex items-center justify-center w-10 h-10",
+                    language === lang.code 
+                      ? "bg-emerald-600 text-white shadow-md scale-110" 
+                      : "text-slate-600 hover:bg-slate-100 border border-slate-200 hover:scale-105"
+                  )}
+                  title={lang.name}
+                >
+                  <span className="text-lg">{lang.flag}</span>
+                </button>
+              ))}
             </div>
             
-            <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+            <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white ml-4">
               <Link to="/kontakt">{t('getQuote')}</Link>
             </Button>
           </div>
@@ -121,36 +120,33 @@ export default function Navbar() {
             })}
             
             {/* Mobile language switcher with flags */}
-            <div className="flex items-center space-x-4 px-3 py-2">
-              <span className="text-sm text-slate-600">Jazyk:</span>
-              <button
-                onClick={() => setLanguage('cs')}
-                className={cn(
-                  "p-2 rounded-md transition-all duration-200 flex items-center space-x-1",
-                  language === 'cs' 
-                    ? "bg-emerald-600 text-white shadow-md" 
-                    : "text-slate-600 hover:bg-slate-100"
-                )}
-                title="Čeština"
-              >
-                <span className="text-lg">🇨🇿</span>
-              </button>
-              <button
-                onClick={() => setLanguage('de')}
-                className={cn(
-                  "p-2 rounded-md transition-all duration-200 flex items-center space-x-1",
-                  language === 'de' 
-                    ? "bg-emerald-600 text-white shadow-md" 
-                    : "text-slate-600 hover:bg-slate-100"
-                )}
-                title="Deutsch"
-              >
-                <span className="text-lg">🇩🇪</span>
-              </button>
+            <div className="px-3 py-4">
+              <div className="text-sm text-slate-600 mb-3">Jazyk / Language / Язык / Мова / Ngôn ngữ:</div>
+              <div className="grid grid-cols-5 gap-2">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setLanguage(lang.code as any)
+                      setIsOpen(false)
+                    }}
+                    className={cn(
+                      "p-3 rounded-md transition-all duration-200 flex flex-col items-center justify-center space-y-1",
+                      language === lang.code 
+                        ? "bg-emerald-600 text-white shadow-md" 
+                        : "text-slate-600 hover:bg-slate-100 border border-slate-200"
+                    )}
+                    title={lang.name}
+                  >
+                    <span className="text-xl">{lang.flag}</span>
+                    <span className="text-xs font-medium">{lang.code.toUpperCase()}</span>
+                  </button>
+                ))}
+              </div>
             </div>
             
             <div className="px-3 py-2">
-              <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700">
+              <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
                 <Link to="/kontakt" onClick={() => setIsOpen(false)}>{t('getQuote')}</Link>
               </Button>
             </div>

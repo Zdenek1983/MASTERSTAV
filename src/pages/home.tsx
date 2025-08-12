@@ -195,7 +195,7 @@ export default function Home() {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg transform hover:scale-105 transition-all duration-300">
+                <Button asChild variant="outline" size="lg" className="border-white text-slate-900 bg-white hover:bg-emerald-50 px-8 py-4 text-lg transform hover:scale-105 transition-all duration-300">
                   <Link to="/reference">{t('references')}</Link>
                 </Button>
               </div>
@@ -298,7 +298,7 @@ export default function Home() {
                 <Link to="/kontakt">{t('getQuote')}</Link>
               </Button>
               <Button asChild size="lg" variant="ghost" className="text-white border border-emerald-400 hover:bg-emerald-600 px-8 py-4 text-lg transform hover:scale-105 transition-all duration-300">
-                <a href="tel:+420123456789">+420 777 250 280</a>
+                <a href="tel:+420777250280">+420 777 250 280</a>
               </Button>
             </div>
           </div>

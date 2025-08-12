@@ -65,8 +65,9 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                 <div className="text-sm text-slate-300">
-                  <p>Hlavní 123</p>
-                  <p>360 01 Karlovy Vary</p>
+                  <p className="font-medium">Provozovna:</p>
+                  <p>Sedlečko 123</p>
+                  <p>362 72 Kyselka</p>
                 </div>
               </div>
               
@@ -101,9 +102,10 @@ export default function Footer() {
             <p className="text-sm text-slate-400">
               © {currentYear} MASTERSTAV s.r.o. {t('allRightsReserved')}
             </p>
-            <p className="text-sm text-slate-400 mt-2 md:mt-0">
-              IČO: 12345678 | DIČ: CZ12345678
-            </p>
+            <div className="text-sm text-slate-400 mt-2 md:mt-0">
+              <p>IČO: 49192060 | DIČ: CZ49192060</p>
+              <p className="text-xs mt-1">Sídlo: Vojtěšská 211/6, 110 00 Praha 1</p>
+            </div>
           </div>
         </div>
       </div>

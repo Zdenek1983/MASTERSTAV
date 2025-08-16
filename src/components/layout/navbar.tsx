@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Home, Image, Phone } from 'lucide-react'
+import { Menu, X, Home, Image, Phone, Settings } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/language-context'
+import { useAdmin } from '@/contexts/admin-context'
 import { cn } from '@/lib/utils'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const { language, setLanguage, t } = useLanguage()
+  const { isLoggedIn } = useAdmin()
   
   const navigation = [
     { name: t('home'), href: '/', icon: Home },
@@ -59,6 +61,20 @@ export default function Navbar() {
               )
             })}
             
+            {/* Admin ikonka */}
+            <Link
+              to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
+              className={cn(
+                "p-2 rounded-md transition-all duration-200 flex items-center justify-center w-10 h-10",
+                isLoggedIn 
+                  ? "bg-emerald-600 text-white shadow-md hover:bg-emerald-700" 
+                  : "text-slate-400 hover:text-slate-600 hover:bg-slate-100 border border-slate-200"
+              )}
+              title={isLoggedIn ? "Admin Dashboard" : "Admin přihlášení"}
+            >
+              <Settings className="w-5 h-5" />
+            </Link>
+            
             {/* Language switcher with flags */}
             <div className="flex items-center space-x-1 ml-4">
               {languages.map((lang) => (
@@ -84,7 +100,20 @@ export default function Navbar() {
           </div>
           
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Mobile admin ikonka */}
+            <Link
+              to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
+              className={cn(
+                "p-2 rounded-md transition-all duration-200",
+                isLoggedIn 
+                  ? "bg-emerald-600 text-white" 
+                  : "text-slate-400 hover:text-slate-600"
+              )}
+            >
+              <Settings className="w-5 h-5" />
+            </Link>
+            
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-600 hover:text-slate-800 focus:outline-none"
@@ -118,6 +147,21 @@ export default function Navbar() {
                 </Link>
               )
             })}
+            
+            {/* Mobile admin link */}
+            <Link
+              to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
+              onClick={() => setIsOpen(false)}
+              className={cn(
+                "block px-3 py-2 rounded-md text-base font-medium flex items-center space-x-2",
+                isLoggedIn
+                  ? "text-emerald-600 bg-emerald-50"
+                  : "text-slate-600 hover:text-emerald-600 hover:bg-slate-50"
+              )}
+            >
+              <Settings className="w-5 h-5" />
+              <span>{isLoggedIn ? "Admin Dashboard" : "Admin přihlášení"}</span>
+            </Link>
             
             {/* Mobile language switcher with flags */}
             <div className="px-3 py-4">

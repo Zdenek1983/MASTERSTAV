@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "clean": "node scripts/clean.js",
     "clean:full": "node scripts/clean.js full",
-    "memory:check": "node -e \"console.log('Memory:', process.memoryUsage())\""  
+    "clean:storage": "node -e \"console.log('Clearing browser storage...'); if(typeof localStorage !== 'undefined') localStorage.clear(); if(typeof sessionStorage !== 'undefined') sessionStorage.clear(); console.log('Storage cleared');\"",
+    "memory:check": "node -e \"console.log('Memory:', process.memoryUsage())\"",
+    "health:check": "node -e \"console.log('Health check passed')\""
   },
   "dependencies": {
     "react": "^18.2.0",

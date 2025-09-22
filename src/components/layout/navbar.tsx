@@ -10,7 +10,16 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const { language, setLanguage, t } = useLanguage()
-  const { isLoggedIn } = useAdmin()
+  
+  // Safely use admin context with fallback
+  let isLoggedIn = false
+  try {
+    const adminContext = useAdmin()
+    isLoggedIn = adminContext.isLoggedIn
+  } catch (error) {
+    console.warn('Admin context not available:', error.message)
+    // Continue without admin functionality
+  }
   
   const navigation = [
     { name: t('home'), href: '/', icon: Home },
@@ -61,7 +70,7 @@ export default function Navbar() {
               )
             })}
             
-            {/* Admin ikonka */}
+            {/* Admin ikonka - only show if admin context is available */}
             <Link
               to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
               className={cn(

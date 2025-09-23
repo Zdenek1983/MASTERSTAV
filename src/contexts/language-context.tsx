@@ -17,8 +17,8 @@ const translations = {
     
     // Homepage
     heroTitle: 'MASTERSTAV s.r.o.',
-    heroSubtitle: 'Rodinná stavební firma s tradicí',
-    heroDescription: 'Specializujeme se na kompletní stavební služby, rekonstrukce a půdní vestavby. S více než 20letou zkušeností v Karlových Varech přinášíme kvalitu a spolehlivost.',
+    heroSubtitle: 'Rodinná stavební firma s tradicí – kamenické práce v exteriéru i interiéru',
+    heroDescription: 'Opěrné zídky, chodníčky, žulové kostky, verandy, sklepy a sanace. Interiér: kamenné a cihlové obklady. Specializujeme se také na kompletní stavební služby, rekonstrukce a zateplení. S více než 20letou zkušeností přinášíme kvalitu, spolehlivost a poctivé řemeslo.',
     getQuote: 'Získat cenovou nabídku',
     ourServices: 'Naše služby',
     
@@ -32,7 +32,7 @@ const translations = {
     earthwork: 'Zemní práce',
     earthworkDesc: 'Výkopy základů, terénní úpravy, odvodnění a kompletní zemní práce.',
     stoneWork: 'Kamenické práce',
-    stoneWorkDesc: 'Kamenické práce Karlovy Vary - obklady, dlažby, schodiště a dekorativní prvky z kamene.',
+    stoneWorkDesc: 'Odborné kamenické práce - obklady, dlažby, schodiště a dekorativní prvky z kamene pro exteriér i interiér.',
     insulation: 'Zateplení',
     insulationDesc: 'Komplexní zateplení fasád a střech pro úsporu energií.',
     interiors: 'Interiéry',
@@ -41,17 +41,17 @@ const translations = {
     // Why choose us
     whyChooseUs: 'Proč si vybrat právě nás?',
     experience: 'Více než 20 let zkušeností',
-    experienceDesc: 'Dlouholetá praxe v Karlových Varech a stovky spokojených zákazníků.',
+    experienceDesc: 'Dlouholetá praxe ve stavebnictví a kamenických pracích, stovky spokojených zákazníků.',
     quality: 'Kvalitní materiály',
     qualityDesc: 'Používáme pouze prověřené materiály od renomovaných výrobců.',
     warranty: 'Záruka a servis',
-    warrantyDesc: 'Na všechny naše práce poskytujeme záruку a následný servis.',
+    warrantyDesc: 'Na všechny naše práce poskytujeme záruchu a následný servis.',
     pricing: 'Transparentní ceny',
     pricingDesc: 'Férové ceny bez skrytých poplatků a dodatečných nákladů.',
     
     // References
     referencesTitle: 'Naše reference',
-    referencesSubtitle: 'Podívejte se na naše dokončené projekty v Karlových Varech a okolí',
+    referencesSubtitle: 'Podívejte se na naše dokončené projekty a realizace',
     viewProject: 'Zobrazit projekt',
     
     // Contact
@@ -80,7 +80,7 @@ const translations = {
     
     // Footer
     companyInfo: 'Informace o společnosti',
-    footerDescription: 'MASTERSTAV s.r.o. je rodinná stavební firma s dlouholetou tradicí v Karlových Varech. Naše práce je naší vizitkou.',
+    footerDescription: 'MASTERSTAV s.r.o. je rodinná stavební firma s dlouholetou tradicí. Specializujeme se na kamenické práce a kompletní stavební služby. Naše práce je naší vizitkou.',
     quickLinks: 'Rychlé odkazy',
     services: 'Služby',
     allRightsReserved: 'Všechna práva vyhrazena',
@@ -93,8 +93,8 @@ const translations = {
     
     // Homepage
     heroTitle: 'MASTERSTAV s.r.o.',
-    heroSubtitle: 'Familienbauunternehmen mit Tradition',
-    heroDescription: 'Wir sind spezialisiert auf komplette Bauleistungen, Rekonstruktionen und Dachausbau. Mit über 20 Jahren Erfahrung in Karlsbad bringen wir Qualität und Zuverlässigkeit.',
+    heroSubtitle: 'Familienbauunternehmen mit Tradition – Steinmetzarbeiten für Außen- und Innenbereiche',
+    heroDescription: 'Stützmauern, Gehwege, Granitwürfel, Veranden, Keller und Sanierungen. Innenbereich: Stein- und Ziegelverkleidungen. Wir spezialisieren uns auch auf komplette Bauleistungen, Rekonstruktionen und Dämmung. Mit über 20 Jahren Erfahrung bringen wir Qualität, Zuverlässigkeit und ehrliches Handwerk.',
     getQuote: 'Kostenvoranschlag erhalten',
     ourServices: 'Unsere Dienstleistungen',
     
@@ -108,7 +108,7 @@ const translations = {
     earthwork: 'Erdarbeiten',
     earthworkDesc: 'Fundamentaushub, Geländemodellierung, Entwässerung und komplette Erdarbeiten.',
     stoneWork: 'Steinmetzarbeiten',
-    stoneWorkDesc: 'Steinmetzarbeiten Karlsbad - Verkleidungen, Böden, Treppen und dekorative Steinelemente.',
+    stoneWorkDesc: 'Professionelle Steinmetzarbeiten - Verkleidungen, Böden, Treppen und dekorative Steinelemente für Außen- und Innenbereiche.',
     insulation: 'Dämmung',
     insulationDesc: 'Komplexe Dämmung von Fassaden und Dächern zur Energieeinsparung.',
     interiors: 'Innenausbau',
@@ -117,7 +117,7 @@ const translations = {
     // Why choose us
     whyChooseUs: 'Warum uns wählen?',
     experience: 'Über 20 Jahre Erfahrung',
-    experienceDesc: 'Langjährige Praxis in Karlsbad und Hunderte zufriedener Kunden.',
+    experienceDesc: 'Langjährige Praxis im Bauwesen und bei Steinmetzarbeiten, hunderte zufriedener Kunden.',
     quality: 'Hochwertige Materialien',
     qualityDesc: 'Wir verwenden nur bewährte Materialien von renommierten Herstellern.',
     warranty: 'Garantie und Service',
@@ -127,7 +127,7 @@ const translations = {
     
     // References
     referencesTitle: 'Unsere Referenzen',
-    referencesSubtitle: 'Schauen Sie sich unsere abgeschlossenen Projekte in Karlsbad und Umgebung an',
+    referencesSubtitle: 'Schauen Sie sich unsere abgeschlossenen Projekte und Realisierungen an',
     viewProject: 'Projekt ansehen',
     
     // Contact
@@ -156,7 +156,7 @@ const translations = {
     
     // Footer
     companyInfo: 'Firmeninformation',
-    footerDescription: 'MASTERSTAV s.r.o. ist ein Familienbauunternehmen mit langer Tradition in Karlsbad. Unsere Arbeit ist unsere Visitenkarte.',
+    footerDescription: 'MASTERSTAV s.r.o. ist ein Familienbauunternehmen mit langer Tradition. Wir spezialisieren uns auf Steinmetzarbeiten und komplette Bauleistungen. Unsere Arbeit ist unsere Visitenkarte.',
     quickLinks: 'Schnelllinks',
     services: 'Dienstleistungen',
     allRightsReserved: 'Alle Rechte vorbehalten',
@@ -169,8 +169,8 @@ const translations = {
     
     // Homepage
     heroTitle: 'MASTERSTAV s.r.o.',
-    heroSubtitle: 'Семейная строительная компания с традициями',
-    heroDescription: 'Мы специализируемся на полном комплексе строительных услуг, реконструкции и мансардных надстроек. Более 20 лет опыта в Карловых Варах - гарантия качества и надежности.',
+    heroSubtitle: 'Семейная строительная компания с традициями – каменные работы экстерьера и интерьера',
+    heroDescription: 'Подпорные стенки, дорожки, гранитная брусчатка, веранды, подвалы и реставрация. Интерьер: каменная и кирпичная облицовка. Специализируемся также на комплексных строительных услугах, реконструкции и утеплении. Более 20 лет опыта - гарантия качества, надежности и честного мастерства.',
     getQuote: 'Получить смету',
     ourServices: 'Наши услуги',
     
@@ -184,7 +184,7 @@ const translations = {
     earthwork: 'Земляные работы',
     earthworkDesc: 'Рытье котлованов под фундаменты, планировка участков, дренаж и полный комплекс земляных работ.',
     stoneWork: 'Каменные работы',
-    stoneWorkDesc: 'Каменные работы Карловы Вары - облицовка, полы, лестницы и декоративные элементы из камня.',
+    stoneWorkDesc: 'Профессиональные каменные работы - облицовка, полы, лестницы и декоративные элементы из камня для экстерьера и интерьера.',
     insulation: 'Утепление',
     insulationDesc: 'Комплексное утепление фасадов и крыш для экономии энергии.',
     interiors: 'Интерьеры',
@@ -193,7 +193,7 @@ const translations = {
     // Why choose us
     whyChooseUs: 'Почему выбирают нас?',
     experience: 'Более 20 лет опыта',
-    experienceDesc: 'Многолетняя практика в Карловых Варах и сотни довольных клиентов.',
+    experienceDesc: 'Многолетняя практика в строительстве и каменных работах, сотни довольных клиентов.',
     quality: 'Качественные материалы',
     qualityDesc: 'Мы используем только проверенные материалы от известных производителей.',
     warranty: 'Гарантия и сервис',
@@ -203,7 +203,7 @@ const translations = {
     
     // References
     referencesTitle: 'Наши работы',
-    referencesSubtitle: 'Посмотрите на наши завершенные проекты в Карловых Варах и окрестностях',
+    referencesSubtitle: 'Посмотрите на наши завершенные проекты и реализации',
     viewProject: 'Посмотреть проект',
     
     // Contact
@@ -232,7 +232,7 @@ const translations = {
     
     // Footer
     companyInfo: 'Информация о компании',
-    footerDescription: 'MASTERSTAV s.r.o. - семейная строительная компания с многолетними традициями в Карловых Варах. Наша работа - наша визитная карточка.',
+    footerDescription: 'MASTERSTAV s.r.o. - семейная строительная компания с многолетними традициями. Специализируемся на каменных работах и комплексных строительных услугах. Наша работа - наша визитная карточка.',
     quickLinks: 'Быстрые ссылки',
     services: 'Услуги',
     allRightsReserved: 'Все права защищены',
@@ -245,8 +245,8 @@ const translations = {
     
     // Homepage
     heroTitle: 'MASTERSTAV s.r.o.',
-    heroSubtitle: 'Сімейна будівельна компанія з традиціями',
-    heroDescription: 'Ми спеціалізуємося на повному комплексі будівельних послуг, реконструкції та мансардних прибудов. Понад 20 років досвіду в Карлових Варах - гарантія якості та надійності.',
+    heroSubtitle: 'Сімейна будівельна компанія з традиціями – кам\'яні роботи екстер\'єру та інтер\'єру',
+    heroDescription: 'Підпірні стінки, доріжки, гранітна бруківка, веранди, підвали та реставрація. Інтер\'єр: кам\'яне та цегляне облицювання. Спеціалізуємося також на комплексних будівельних послугах, реконструкції та утепленні. Понад 20 років досвіду - гарантія якості, надійності та чесного ремесла.',
     getQuote: 'Отримати кошторис',
     ourServices: 'Наші послуги',
     
@@ -260,7 +260,7 @@ const translations = {
     earthwork: 'Земляні роботи',
     earthworkDesc: 'Риття котлованів під фундаменти, планування ділянок, дренаж та повний комплекс земляних робіт.',
     stoneWork: 'Кам\'яні роботи',
-    stoneWorkDesc: 'Кам\'яні роботи Карлові Вари - облицювання, підлоги, сходи та декоративні елементи з каменю.',
+    stoneWorkDesc: 'Професійні кам\'яні роботи - облицювання, підлоги, сходи та декоративні елементи з каменю для екстер\'єру та інтер\'єру.',
     insulation: 'Утеплення',
     insulationDesc: 'Комплексне утеплення фасадів та дахів для економії енергії.',
     interiors: 'Інтер\'єри',
@@ -269,7 +269,7 @@ const translations = {
     // Why choose us
     whyChooseUs: 'Чому обирають нас?',
     experience: 'Понад 20 років досвіду',
-    experienceDesc: 'Багаторічна практика в Карлових Варах та сотні задоволених клієнтів.',
+    experienceDesc: 'Багаторічна практика в будівництві та кам\'яних роботах, сотні задоволених клієнтів.',
     quality: 'Якісні матеріали',
     qualityDesc: 'Ми використовуємо тільки перевірені матеріали від відомих виробників.',
     warranty: 'Гарантія та сервіс',
@@ -279,7 +279,7 @@ const translations = {
     
     // References
     referencesTitle: 'Наші роботи',
-    referencesSubtitle: 'Подивіться на наші завершені проекти в Карлових Варах та околицях',
+    referencesSubtitle: 'Подивіться на наші завершені проекти та реалізації',
     viewProject: 'Подивитися проект',
     
     // Contact
@@ -308,7 +308,7 @@ const translations = {
     
     // Footer
     companyInfo: 'Інформація про компанію',
-    footerDescription: 'MASTERSTAV s.r.o. - сімейна будівельна компанія з багаторічними традиціями в Карлових Варах. Наша робота - наша візитна картка.',
+    footerDescription: 'MASTERSTAV s.r.o. - сімейна будівельна компанія з багаторічними традиціями. Спеціалізуємося на кам\'яних роботах та комплексних будівельних послугах. Наша робота - наша візитна картка.',
     quickLinks: 'Швидкі посилання',
     services: 'Послуги',
     allRightsReserved: 'Всі права захищені',
@@ -321,8 +321,8 @@ const translations = {
     
     // Homepage
     heroTitle: 'MASTERSTAV s.r.o.',
-    heroSubtitle: 'Công ty xây dựng gia đình với truyền thống',
-    heroDescription: 'Chúng tôi chuyên về các dịch vụ xây dựng toàn diện, cải tạo và xây dựng tầng áp mái. Với hơn 20 năm kinh nghiệm tại Karlovy Vary, chúng tôi mang đến chất lượng và độ tin cậy.',
+    heroSubtitle: 'Công ty xây dựng gia đình với truyền thống – công việc đá ngoại thất và nội thất',
+    heroDescription: 'Tường chắn, lối đi, khối granite, hiên, tầng hầm và tu sửa. Nội thất: ốp lát đá và gạch. Chúng tôi cũng chuyên về các dịch vụ xây dựng toàn diện, cải tạo và cách nhiệt. Với hơn 20 năm kinh nghiệm, chúng tôi mang đến chất lượng, độ tin cậy và tay nghề thành thật.',
     getQuote: 'Nhận báo giá',
     ourServices: 'Dịch vụ của chúng tôi',
     
@@ -336,7 +336,7 @@ const translations = {
     earthwork: 'Công tác đất',
     earthworkDesc: 'Đào móng, cải tạo địa hình, thoát nước và toàn bộ công tác đất.',
     stoneWork: 'Công tác đá',
-    stoneWorkDesc: 'Công tác đá Karlovy Vary - ốp lát, sàn, cầu thang và các yếu tố trang trí bằng đá.',
+    stoneWorkDesc: 'Công tác đá chuyên nghiệp - ốp lát, sàn, cầu thang và các yếu tố trang trí bằng đá cho ngoại thất và nội thất.',
     insulation: 'Cách nhiệt',
     insulationDesc: 'Cách nhiệt toàn diện cho mặt tiền và mái nhà để tiết kiệm năng lượng.',
     interiors: 'Nội thất',
@@ -345,7 +345,7 @@ const translations = {
     // Why choose us
     whyChooseUs: 'Tại sao chọn chúng tôi?',
     experience: 'Hơn 20 năm kinh nghiệm',
-    experienceDesc: 'Nhiều năm thực hành tại Karlovy Vary và hàng trăm khách hàng hài lòng.',
+    experienceDesc: 'Nhiều năm thực hành trong xây dựng và công tác đá, hàng trăm khách hàng hài lòng.',
     quality: 'Vật liệu chất lượng',
     qualityDesc: 'Chúng tôi chỉ sử dụng vật liệu đã được kiểm chứng từ các nhà sản xuất uy tín.',
     warranty: 'Bảo hành và dịch vụ',
@@ -355,7 +355,7 @@ const translations = {
     
     // References
     referencesTitle: 'Công trình của chúng tôi',
-    referencesSubtitle: 'Xem các dự án đã hoàn thành của chúng tôi tại Karlovy Vary và vùng phụ cận',
+    referencesSubtitle: 'Xem các dự án và thực hiện đã hoàn thành của chúng tôi',
     viewProject: 'Xem dự án',
     
     // Contact
@@ -384,7 +384,7 @@ const translations = {
     
     // Footer
     companyInfo: 'Thông tin công ty',
-    footerDescription: 'MASTERSTAV s.r.o. là công ty xây dựng gia đình với truyền thống lâu đời tại Karlovy Vary. Công việc của chúng tôi là danh thiếp của chúng tôi.',
+    footerDescription: 'MASTERSTAV s.r.o. là công ty xây dựng gia đình với truyền thống lâu đời. Chúng tôi chuyên về công tác đá và dịch vụ xây dựng toàn diện. Công việc của chúng tôi là danh thiếp của chúng tôi.',
     quickLinks: 'Liên kết nhanh',
     services: 'Dịch vụ',
     allRightsReserved: 'Bảo lưu mọi quyền',

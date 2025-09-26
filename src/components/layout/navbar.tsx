@@ -30,7 +30,6 @@ export default function Navbar() {
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <div className="w-8 h-8 bg-emerald-600 rounded-lg mr-3 flex items-center justify-center">
@@ -40,7 +39,6 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Desktop navigation - střed */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => {
               const isActive = location.pathname === item.href
@@ -61,7 +59,6 @@ export default function Navbar() {
               )
             })}
             
-            {/* Language switcher with flags */}
             <div className="flex items-center space-x-1 ml-4">
               {languages.map((lang) => (
                 <button
@@ -85,7 +82,6 @@ export default function Navbar() {
             </Button>
           </div>
           
-          {/* Desktop Admin - zcela doprava s velkým odsazením */}
           <div className="hidden md:flex items-center ml-8">
             <div className="w-px h-6 bg-slate-200 mr-6"></div>
             <Link
@@ -102,9 +98,7 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Mobile menu button s admin ikonkou */}
           <div className="md:hidden flex items-center space-x-2">
-            {/* Mobile admin ikonka */}
             <Link
               to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
               className={cn(
@@ -127,7 +121,6 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-slate-200">
           <div className="px-2 pt-2 pb-3 space-y-1">
@@ -151,7 +144,6 @@ export default function Navbar() {
               )
             })}
             
-            {/* Mobile admin link */}
             <Link
               to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
               onClick={() => setIsOpen(false)}
@@ -166,9 +158,8 @@ export default function Navbar() {
               <span>{isLoggedIn ? "Admin Dashboard" : "Admin přihlášení"}</span>
             </Link>
             
-            {/* Mobile language switcher with flags */}
             <div className="px-3 py-4">
-              <div className="text-sm text-slate-600 mb-3">Jazyk / Language / Язык / Мова / Ngôn ngữ:</div>
+              <div className="text-sm text-slate-600 mb-3">Jazyk / Language:</div>
               <div className="grid grid-cols-5 gap-2">
                 {languages.map((lang) => (
                   <button

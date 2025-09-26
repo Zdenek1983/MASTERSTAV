@@ -17,7 +17,8 @@ export default function Navbar() {
     const adminContext = useAdmin()
     isLoggedIn = adminContext.isLoggedIn
   } catch (error) {
-    console.warn('Admin context not available:', error.message)
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    console.warn('Admin context not available:', message)
     // Continue without admin functionality
   }
   

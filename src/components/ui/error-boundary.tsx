@@ -33,7 +33,7 @@ export class ErrorBoundary extends Component<Props, State> {
     this.setState({ errorInfo })
     
     // Log to external service in production
-    if (process.env.NODE_ENV === 'production') {
+    if (import.meta.env.PROD) {
       // Could send to error tracking service here
     }
   }
@@ -106,7 +106,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 </div>
               )}
 
-              {process.env.NODE_ENV === 'development' && this.state.error && (
+              {import.meta.env.DEV && this.state.error && (
                 <details className="text-left bg-slate-100 p-3 rounded mb-4">
                   <summary className="cursor-pointer font-medium text-sm text-slate-700 mb-2">
                     Detaily chyby (pouze v development)

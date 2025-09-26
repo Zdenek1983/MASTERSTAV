@@ -24,8 +24,7 @@ export default function SafeAvatar({
   
   // Use our avatar proxy API instead of dicebear directly
   const avatarUrl = useMemo(() => {
-    const isDev = process.env.NODE_ENV === 'development'
-    if (isDev) {
+    if (import.meta.env.DEV) {
       // In development, skip external API and generate locally
       return null
     }

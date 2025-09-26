@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { User, RefreshCw } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
 import { Button } from './button'
 import { cn } from '@/lib/utils'
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ImageIcon, AlertCircle } from 'lucide-react'
+import { AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface SafeImageProps {

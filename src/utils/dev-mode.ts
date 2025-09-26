@@ -17,7 +17,7 @@ export const EXTERNAL_SERVICES = {
 
 // Safe external script loader
 export function loadExternalScript(src: string, enabled: boolean = true): Promise<void> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (!enabled || isDevelopment) {
       console.info(`Skipping external script in development: ${src}`)
       resolve()

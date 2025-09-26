@@ -1,4 +1,4 @@
-// Storage management utilities for handling FILE_ERROR_NO_SPACE and related issues
+// Enhanced storage management utilities for handling FILE_ERROR_NO_SPACE and related issues
 
 export interface StorageInfo {
   used: number
@@ -38,74 +38,96 @@ export class StorageManager {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
   }
   
-  static isStorageFull(): Promise<boolean> {
-    return this.getStorageInfo().then(info => {
-      return info ? info.percentage > 90 : false
-    })
+  static async isStorageFull(): Promise<boolean> {
+    const info = await this.getStorageInfo()
+    return info ? info.percentage > 90 : false
   }
   
-  static clearCaches(): Promise<void> {
-    return new Promise((resolve) => {
-      const promises: Promise<void>[] = []
+  static async clearCaches(): Promise<void> {
+    console.log('Clearing caches...')
+    const promises: Promise<void>[] = []
+    
+    // Clear localStorage safely - keep essential data
+    try {
+      const keysToKeep = ['admin_session', 'language', 'theme']
+      const keysToRemove: string[] = []
       
-      // Clear localStorage safely
-      try {
-        // Keep essential data but clear cache entries
-        const keysToKeep = ['admin_session', 'language', 'theme']
-        const keysToRemove: string[] = []
-        
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i)
-          if (key && !keysToKeep.includes(key)) {
-            keysToRemove.push(key)
-          }
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i)
+        if (key && !keysToKeep.includes(key)) {
+          keysToRemove.push(key)
         }
-        
-        keysToRemove.forEach(key => {
+      }
+      
+      keysToRemove.forEach(key => {
+        try {
           localStorage.removeItem(key)
-        })
-      } catch (error) {
-        console.warn('Failed to clear localStorage:', error)
-      }
+        } catch (error) {
+          console.warn(`Failed to remove ${key}:`, error)
+        }
+      })
       
-      // Clear sessionStorage
-      try {
-        sessionStorage.clear()
-      } catch (error) {
-        console.warn('Failed to clear sessionStorage:', error)
-      }
-      
-      // Clear caches API if available
-      if ('caches' in window) {
-        promises.push(
-          caches.keys().then(names => {
-            return Promise.all(
-              names.map(name => caches.delete(name))
+      console.log(`Cleared ${keysToRemove.length} localStorage keys`)
+    } catch (error) {
+      console.warn('Failed to clear localStorage:', error)
+    }
+    
+    // Clear sessionStorage
+    try {
+      sessionStorage.clear()
+      console.log('Cleared sessionStorage')
+    } catch (error) {
+      console.warn('Failed to clear sessionStorage:', error)
+    }
+    
+    // Clear caches API if available
+    if ('caches' in window) {
+      promises.push(
+        caches.keys().then(names => {
+          console.log(`Found ${names.length} caches to clear`)
+          return Promise.all(
+            names.map(name => 
+              caches.delete(name).then(() => 
+                console.log(`Cleared cache: ${name}`)
+              ).catch(error => 
+                console.warn(`Failed to clear cache ${name}:`, error)
+              )
             )
-          }).then(() => {})
-        )
-      }
-      
-      Promise.all(promises).finally(() => resolve())
-    })
+          )
+        }).then(() => {})
+      )
+    }
+    
+    await Promise.all(promises)
+    console.log('Cache clearing completed')
   }
   
   static async cleanupIndexedDB(): Promise<void> {
     if ('indexedDB' in window) {
       try {
         const databases = await indexedDB.databases()
+        console.log(`Found ${databases.length} IndexedDB databases`)
+        
         const deletePromises = databases.map(db => {
           if (db.name && !db.name.includes('essential')) {
             return new Promise<void>((resolve) => {
+              console.log(`Deleting database: ${db.name}`)
               const deleteReq = indexedDB.deleteDatabase(db.name!)
-              deleteReq.onsuccess = () => resolve()
-              deleteReq.onerror = () => resolve() // Continue even if deletion fails
+              deleteReq.onsuccess = () => {
+                console.log(`Deleted database: ${db.name}`)
+                resolve()
+              }
+              deleteReq.onerror = () => {
+                console.warn(`Failed to delete database: ${db.name}`)
+                resolve() // Continue even if deletion fails
+              }
             })
           }
           return Promise.resolve()
         })
         
         await Promise.all(deletePromises)
+        console.log('IndexedDB cleanup completed')
       } catch (error) {
         console.warn('Failed to cleanup IndexedDB:', error)
       }
@@ -113,44 +135,141 @@ export class StorageManager {
   }
   
   static async performFullCleanup(): Promise<void> {
-    console.log('Performing full storage cleanup...')
+    console.log('🧹 Performing full storage cleanup...')
     
-    await Promise.all([
-      this.clearCaches(),
-      this.cleanupIndexedDB()
-    ])
-    
-    console.log('Storage cleanup completed')
+    try {
+      await Promise.all([
+        this.clearCaches(),
+        this.cleanupIndexedDB()
+      ])
+      
+      const info = await this.getStorageInfo()
+      if (info) {
+        console.log(`📊 Storage after cleanup: ${info.percentage.toFixed(1)}% (${this.formatBytes(info.used)} / ${this.formatBytes(info.quota)})`)
+      }
+      
+      console.log('✅ Storage cleanup completed successfully')
+    } catch (error) {
+      console.error('❌ Storage cleanup failed:', error)
+    }
   }
   
   // Monitor storage and show warnings
   static async monitorStorage(): Promise<void> {
-    const info = await this.getStorageInfo()
-    if (info && info.percentage > 80) {
-      console.warn(`Storage usage high: ${info.percentage.toFixed(1)}% (${this.formatBytes(info.used)} / ${this.formatBytes(info.quota)})`)
-      
-      if (info.percentage > 95) {
-        // Auto cleanup if critically full
-        await this.clearCaches()
+    try {
+      const info = await this.getStorageInfo()
+      if (info) {
+        if (info.percentage > 95) {
+          console.error(`🚨 Storage critically full: ${info.percentage.toFixed(1)}% (${this.formatBytes(info.used)} / ${this.formatBytes(info.quota)})`)
+          console.log('🧹 Performing automatic cleanup...')
+          await this.clearCaches()
+        } else if (info.percentage > 80) {
+          console.warn(`⚠️ Storage usage high: ${info.percentage.toFixed(1)}% (${this.formatBytes(info.used)} / ${this.formatBytes(info.quota)})`)
+        } else {
+          console.info(`📊 Storage usage: ${info.percentage.toFixed(1)}% (${this.formatBytes(info.used)} / ${this.formatBytes(info.quota)})`)
+        }
       }
+    } catch (error) {
+      console.warn('Failed to monitor storage:', error)
     }
   }
   
   // Check if storage error is likely
-  static isLowSpace(threshold: number = 90): Promise<boolean> {
-    return this.getStorageInfo().then(info => {
-      if (!info) return false
-      return info.percentage > threshold
-    })
+  static async isLowSpace(threshold: number = 90): Promise<boolean> {
+    const info = await this.getStorageInfo()
+    if (!info) return false
+    return info.percentage > threshold
+  }
+  
+  // Emergency cleanup for FILE_ERROR_NO_SPACE
+  static async emergencyCleanup(): Promise<void> {
+    console.log('🆘 Emergency storage cleanup initiated')
+    
+    // More aggressive cleanup
+    try {
+      // Clear ALL localStorage except critical items
+      const criticalKeys = ['admin_session']
+      const allKeys = Object.keys(localStorage)
+      
+      allKeys.forEach(key => {
+        if (!criticalKeys.includes(key)) {
+          try {
+            localStorage.removeItem(key)
+          } catch (error) {
+            // Ignore errors during emergency cleanup
+          }
+        }
+      })
+      
+      // Clear all session storage
+      try {
+        sessionStorage.clear()
+      } catch (error) {
+        // Ignore errors
+      }
+      
+      // Clear all caches
+      if ('caches' in window) {
+        const cacheNames = await caches.keys()
+        await Promise.all(
+          cacheNames.map(name => 
+            caches.delete(name).catch(() => {})
+          )
+        )
+      }
+      
+      // Clear all IndexedDB
+      if ('indexedDB' in window) {
+        try {
+          const databases = await indexedDB.databases()
+          await Promise.all(
+            databases.map(db => 
+              db.name ? new Promise<void>(resolve => {
+                const deleteReq = indexedDB.deleteDatabase(db.name!)
+                deleteReq.onsuccess = () => resolve()
+                deleteReq.onerror = () => resolve()
+              }) : Promise.resolve()
+            )
+          )
+        } catch (error) {
+          // Ignore errors during emergency cleanup
+        }
+      }
+      
+      console.log('✅ Emergency cleanup completed')
+    } catch (error) {
+      console.error('❌ Emergency cleanup failed:', error)
+    }
   }
 }
 
-// Auto-monitor storage on load
+// Auto-monitor storage
 if (typeof window !== 'undefined') {
   // Monitor every 30 seconds
-  setInterval(() => {
+  const monitorInterval = setInterval(() => {
     StorageManager.monitorStorage().catch(console.warn)
   }, 30000)
+  
+  // Clear interval when page unloads
+  window.addEventListener('beforeunload', () => {
+    clearInterval(monitorInterval)
+  })
+  
+  // Listen for storage events
+  window.addEventListener('storage', () => {
+    StorageManager.monitorStorage().catch(console.warn)
+  })
+  
+  // Handle quota exceeded errors
+  window.addEventListener('error', (event) => {
+    if (event.message?.includes('QuotaExceededError') || 
+        event.message?.includes('FILE_ERROR_NO_SPACE')) {
+      console.error('💾 Storage quota exceeded, performing emergency cleanup...')
+      StorageManager.emergencyCleanup().then(() => {
+        console.log('🔄 Consider refreshing the page')
+      })
+    }
+  })
   
   // Initial check
   StorageManager.monitorStorage().catch(console.warn)

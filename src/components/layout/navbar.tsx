@@ -10,7 +10,15 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const { language, setLanguage, t } = useLanguage()
-  const { isLoggedIn } = useAdmin()
+  
+  // Safe admin hook usage with fallback
+  let isLoggedIn = false
+  try {
+    const admin = useAdmin()
+    isLoggedIn = admin.isLoggedIn
+  } catch (error) {
+    console.warn('Admin context not available:', error)
+  }
   
   const navigation = [
     { name: t('home'), href: '/', icon: Home },

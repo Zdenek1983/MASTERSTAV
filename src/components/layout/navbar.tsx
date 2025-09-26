@@ -38,7 +38,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
@@ -49,7 +49,7 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Desktop navigation */}
+          {/* Desktop navigation - střed */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => {
               const isActive = location.pathname === item.href
@@ -69,20 +69,6 @@ export default function Navbar() {
                 </Link>
               )
             })}
-            
-            {/* Admin ikonka - only show if admin context is available */}
-            <Link
-              to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
-              className={cn(
-                "p-2 rounded-md transition-all duration-200 flex items-center justify-center w-10 h-10",
-                isLoggedIn 
-                  ? "bg-emerald-600 text-white shadow-md hover:bg-emerald-700" 
-                  : "text-slate-400 hover:text-slate-600 hover:bg-slate-100 border border-slate-200"
-              )}
-              title={isLoggedIn ? "Admin Dashboard" : "Admin přihlášení"}
-            >
-              <Settings className="w-5 h-5" />
-            </Link>
             
             {/* Language switcher with flags */}
             <div className="flex items-center space-x-1 ml-4">
@@ -108,7 +94,24 @@ export default function Navbar() {
             </Button>
           </div>
           
-          {/* Mobile menu button */}
+          {/* Desktop Admin - zcela doprava s velkým odsazením */}
+          <div className="hidden md:flex items-center ml-8">
+            <div className="w-px h-6 bg-slate-200 mr-6"></div>
+            <Link
+              to={isLoggedIn ? "/admin/dashboard" : "/admin/login"}
+              className={cn(
+                "p-2 rounded-md transition-all duration-200 flex items-center justify-center w-10 h-10",
+                isLoggedIn 
+                  ? "bg-emerald-600 text-white shadow-md hover:bg-emerald-700" 
+                  : "text-slate-400 hover:text-slate-600 hover:bg-slate-100 border border-slate-200"
+              )}
+              title={isLoggedIn ? "Admin Dashboard" : "Admin přihlášení"}
+            >
+              <Settings className="w-5 h-5" />
+            </Link>
+          </div>
+          
+          {/* Mobile menu button s admin ikonkou */}
           <div className="md:hidden flex items-center space-x-2">
             {/* Mobile admin ikonka */}
             <Link
